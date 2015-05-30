@@ -1,0 +1,28 @@
+= form_for @spell do |f|
+  %p
+    = f.label :name
+    = f.text_field :name, :autofocus => true
+  %p
+    = f.label :attack
+    = f.number_field :attack
+  %p
+    = f.label :damage
+    = f.number_field :damage
+  %p
+    = f.label :defence
+    = f.number_field :defence
+  %p
+    = f.label :speed
+    = f.number_field :speed
+  %p
+    = f.label :type
+    = f.select :dmg_type, ["magic", "physical"]
+  %p
+    = f.label :affinity
+    = f.text_field :affinity
+
+
+
+  %p
+    = f.label :submit
+    = f.submit

@@ -1,0 +1,5 @@
+= link_to 'New Spell', new_spell_path
+
+%ol
+  -@spells.each do |spell|
+    %li= link_to(spell.name, spell) 

@@ -1,0 +1,14 @@
+
+
+<h2> <%= @spell.name %></h2>
+
+<li>Attack: <%= @spell.attack %></li>
+<li>damage: <%= @spell.damage %></li>
+<li>defence: <%= @spell.defence %></li>
+<li>type: <%= @spell.dmg_type %></li>
+<li>speed: <%= @spell.speed %></li>
+<li>affinity: <%= @spell.affinity %></li>
+
+
+<%= link_to 'Edit', edit_spell_path(@spell) %>
+<%= link_to 'Delete', @spell, :method => 'delete', :data => {:confirm => "Are you sure"} %>

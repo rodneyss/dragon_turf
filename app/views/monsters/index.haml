@@ -1,0 +1,5 @@
+= link_to 'New monster', new_monster_path
+
+%ol
+  -@monsters.each do |monster|
+    %li= link_to(monster.name, monster) 

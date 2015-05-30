@@ -1,0 +1,70 @@
+= form_for @monster do |f|
+ %p
+  = f.label :name
+  = f.text_field :name, :autofocus => true
+ %p
+  = f.label :attack
+  = f.number_field :attack
+ %p
+  = f.label :damage
+  = f.number_field :damage
+ %p
+  = f.label :defence
+  = f.number_field :defence
+ %p
+  = f.label :speed
+  = f.number_field :speed
+ %p
+  = f.label :rank
+  = f.number_field :rank
+ %p
+  = f.label :xp
+  = f.number_field :xp
+ %p
+  = f.label :gold
+  = f.number_field :gold
+ %p
+  = f.label :level
+  = f.number_field :level
+ %p
+  = f.label :image
+  = f.text_field :image
+ %p
+  = f.label :user_id
+  = f.number_field :user_id
+
+ %p
+  = f.label :rank
+  = f.number_field :rank
+ %p
+  = f.label :affinity
+  = f.text_field :affinity
+
+ %p
+  = f.label :lng
+  = f.text_field :lng
+
+ %p
+  = f.label :lat
+  = f.text_field :lat
+ %p
+  = f.label :suburb
+  = f.text_field :suburb
+ %p
+  = f.label :state
+  = f.text_field :state
+ %p
+  = f.label :country
+  = f.text_field :country
+ %p
+  = f.label :alive
+  = f.check_box :alive
+ %p
+  = f.label :tagged
+  = f.check_box :tagged
+
+
+
+ %p
+  = f.label :submit
+  = f.submit

@@ -1,0 +1,12 @@
+<h2> <%= @monster.name %></h2>
+
+<li>Attack: <%= @monster.attack %></li>
+<li>damage: <%= @monster.damage %></li>
+<li>defence: <%= @monster.defence %></li>
+<li>Level: <%= @monster.level %></li>
+<li>Rank: <%= @monster.rank %></li>
+<li>affinity: <%= @monster.affinity %></li>
+
+
+<%= link_to 'Edit', edit_monster_path(@monster) %>
+<%= link_to 'Delete', @monster, :method => 'delete', :data => {:confirm => "Are you sure"} %>

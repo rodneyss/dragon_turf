@@ -1,0 +1,10 @@
+<h1>Pages#home</h1>
+
+
+
+<% if @current_user %>
+Your userid is: <%= @current_user.name %>
+time since creating: <%= time_ago_in_words(@current_user.created_at) %>
+<% else %>
+<p>Please sign up</p>
+<% end  %>
