@@ -46,6 +46,10 @@ Rails.application.routes.draw do
 
  root :to => 'pages#home'
 
+ get 'search' => 'pages#search'
+
+ post 'search' => 'pages#anymon'
+
    resources :users, :except => [:edit, :show] do   #rerouting for edit profile
     collection do
       get '/edit' => 'users#edit'

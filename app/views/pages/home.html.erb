@@ -1,10 +1,15 @@
-<h1>Pages#home</h1>
+
+
+<div class="content">
+<h1>Home</h1>
 
 
 
 <% if @current_user %>
-Your userid is: <%= @current_user.name %>
-time since creating: <%= time_ago_in_words(@current_user.created_at) %>
+<p>Your userid is: <%= @current_user.name %></p>
+<p>time since creating: <%= time_ago_in_words(@current_user.created_at) %></p>
 <% else %>
 <p>Please sign up</p>
 <% end  %>
+
+</div>

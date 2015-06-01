@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.text :image
       t.integer :deaths
       t.integer :highest_level
+      t.integer :health
       t.float :lng
       t.float :lat
       t.string :suburb

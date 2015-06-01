@@ -9,6 +9,7 @@
 #  image           :text
 #  deaths          :integer
 #  highest_level   :integer
+#  health          :integer
 #  lng             :float
 #  lat             :float
 #  suburb          :string
@@ -35,8 +36,10 @@ class User < ActiveRecord::Base
 
   validates :name, :presence => true
   validates :name, :uniqueness => true
-
-  has_and_belongs_to_many :spells
+  
+  has_many :spellboxes
+  has_many :spells, :through => :spellboxes
   has_many :monsters
+
   
 end

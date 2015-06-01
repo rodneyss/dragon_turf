@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'haml'
 
+gem 'gon', '~> 5.2.3'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -53,3 +54,6 @@ group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
 end
+
+gem 'rails_12factor', group: :production
+

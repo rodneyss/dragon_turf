@@ -10,6 +10,7 @@ module ApplicationHelper
     end
 
     if @current_user.present?
+        nav += '<li>' + link_to("Search Enemies", search_path) + '</li>'
         nav += '<li>' + link_to("Edit Profile", edit_users_path) + '</li>'
         nav += '<li>' + link_to("Logout #{ @current_user.name }", login_path, :method => :delete) + '</li>'
     else

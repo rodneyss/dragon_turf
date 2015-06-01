@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150530054910) do
+ActiveRecord::Schema.define(version: 20150531000033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,15 @@ ActiveRecord::Schema.define(version: 20150530054910) do
     t.integer  "zone_id"
   end
 
+  create_table "spellboxes", force: :cascade do |t|
+    t.integer "spell_id"
+    t.integer "user_id"
+    t.integer "amount"
+  end
+
+  add_index "spellboxes", ["spell_id"], name: "index_spellboxes_on_spell_id", using: :btree
+  add_index "spellboxes", ["user_id"], name: "index_spellboxes_on_user_id", using: :btree
+
   create_table "spells", force: :cascade do |t|
     t.string   "name"
     t.integer  "attack"
@@ -68,12 +77,12 @@ ActiveRecord::Schema.define(version: 20150530054910) do
     t.text     "image"
     t.integer  "deaths"
     t.integer  "highest_level"
+    t.integer  "health"
     t.float    "lng"
     t.float    "lat"
     t.string   "suburb"
     t.string   "country"
     t.string   "state"
-    t.integer  "health"
     t.integer  "xp"
     t.integer  "gold"
     t.integer  "slota"

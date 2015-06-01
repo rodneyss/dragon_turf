@@ -2,11 +2,17 @@
 <html>
 <head>
   <title>DragonTurf</title>
+  <%= include_gon %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7wG1u31CpobRF3gqIpQPQGWVtWPZu8d8">
+    </script>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="container">
 
 <nav>
   <ul>
@@ -22,7 +28,10 @@
 <% end %>
 
 
+
 <%= yield %>
+
+</div>
 
 </body>
 </html>

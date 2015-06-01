@@ -14,6 +14,7 @@
 #  xp          :integer
 #  gold        :integer
 #  level       :integer
+#  health      :integer
 #  rank        :string
 #  attack      :integer
 #  damage      :integer
