@@ -1,0 +1,39 @@
+<div class="ogreAttackWindow">
+<img class="ogrePic" src="<%= @monster.image %>"> 
+  <div class="ranking">
+          <div class="ogreLevel"> 
+            <div class="ogreHealth"><%= @monster.health %> </div><div class="lvl">Health</div> 
+          </div>
+
+          <div class="ogreLevel"> 
+            <div class="lvlNum"><%= @monster.level %> </div><div class="lvl">Level</div> 
+          </div>
+
+            <div class="ogreLevel"> 
+            <div class="lvlNum"><%= @monster.rank %> </div><div class="lvl">Rank</div> 
+          </div>
+  </div>
+
+  <div class="ogreStats">
+    <p>Name: <span><%= @monster.name %></span></p>
+    <p>Attack: <span><%= @monster.attack %></span></p>
+    <p>Damage: <span><%= @monster.damage %></span></p>
+    <p>Defence: <span><%= @monster.defence %></span></p>
+    <p>Speed: <span><%= @monster.speed %></span></p>
+    <p>Affinity: <span><%= @monster.affinity %></span></p>
+    <p>Deaths: <span><%= @monster.deaths %></span></p>
+  </div>
+
+</div>
+
+<form action="/damage" method="post">
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+  <input type="hidden" name="slota" >
+  <input type="hidden" name="slotb" >
+  <input type="hidden" name="monster_id" value="<%= @monster.id %>" >
+ 
+  <button>Unleash The Fury!</button>
+
+</form>
+
+<div class="attackB">

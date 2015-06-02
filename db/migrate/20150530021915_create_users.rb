@@ -8,9 +8,9 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :deaths
       t.integer :highest_level
       t.integer :health
-      t.float :lng
-      t.float :lat
-      t.string :suburb
+      t.float :longitude
+      t.float :latitude
+      t.string :zipcode
       t.string :country
       t.string :state
       t.integer :health
@@ -28,6 +28,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :attacker_id
 
       t.timestamps
+
 
     end
   end

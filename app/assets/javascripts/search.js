@@ -49,7 +49,7 @@ numbers = lat.toString()+ "," + lng.toString();
   });
 
   showMeMap(lat, lng);
-  addMarkerToMap(gon.nearby_monsters);
+  addMarkerToMap(gon.nearby_monsters, lat, lng);
 
 }
 
@@ -145,14 +145,6 @@ var styles = [
   //   anchor: new google.maps.Point(0, 32)
   // };
 
-var beaches = [
-  ['Bondi Beach', -33.890542, 151.274856, 4],
-  ['Coogee Beach', -33.923036, 151.259052, 5],
-  ['Cronulla Beach', -34.028249, 151.157507, 3],
-  ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
-  ['Maroubra Beach', -33.950198, 151.259302, 1]
-];
-
 
 
 
@@ -160,7 +152,7 @@ var image = '/assets/ogre.png';
 
 // function addMarkerToMap(lat, lng, htmlMarkupForInfoWindow){
 
-function addMarkerToMap(locations){
+function addMarkerToMap(locations, lat, lng){
   var i = 0;
 
   var markDown = setInterval(function(){
@@ -168,9 +160,8 @@ function addMarkerToMap(locations){
     var mon = locations[i];
 
 
-
     var infowindow = new google.maps.InfoWindow();
-    var myLatLng = new google.maps.LatLng(mon.lng, mon.lat);
+    var myLatLng = new google.maps.LatLng(mon.latitude, mon.longitude);
     var marker = new google.maps.Marker({
         position: myLatLng,
         map: map,
@@ -182,39 +173,86 @@ function addMarkerToMap(locations){
     if(i == locations.length){
       clearInterval(markDown);
     };
+
+    var travel = distance_between(lat, lng, mon.latitude, mon.longitude);
+
+
+
      
-    //Gives each marker an Id for the on click
-    // markerCount++;
+  var ogreLink = "Name: " + mon.name + "<br>"+
+                 "lvl: " + mon.level + "<br>"+
+                "Dmg: " + mon.damage +"<br>"+
+                "Def: " + mon.defence + "<br>";
+
+
+ if(travel <= 30){
+  ogreLink += "<a href='attack/"+ mon.id +"'"+" class='ogrepop'>attack</button>";
+ }else{
+  ogreLink += "distance: " + travel + "m<br>";
+  }
  
-    //Creates the event listener for clicking the marker
-    //and places the marker on the 
+                
 
 
     google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-            infowindow.setContent("im an ogre!!! rawr");
+            infowindow.setContent(ogreLink);
             infowindow.open(map, marker);
         }
     })(marker, markerCount)); 
 
     }, 1000);
-    }
+  };
 
+Math.radians = function(degrees) {
+  return degrees * Math.PI / 180;
+};
 
+function distance_between(lat1, lng1, lat2, lng2){
+  // convert degrees to radians
 
+  lat1 = Math.radians(lat1);
+  lat2 = Math.radians(lat2);
+  lng1 = Math.radians(lng1);
+  lng2 = Math.radians(lng2);
 
+  // compute deltas
+  dlat = lat2 - lat1;
+  dlon = lng2 - lng1;
 
-
-function markme() {
-  var lat = -33.8010375;
-  var lng = 151.1575510;
+  a = Math.pow( (Math.sin(dlat / 2)),2) + Math.cos(lat1) *
+      Math.pow( (Math.sin(dlon / 2)), 2) * Math.cos(lat2);
+  c = 2 * Math.atan2( Math.sqrt(a), Math.sqrt(1-a));
+  return Math.round(c * 6371000);
 }
 
 
+function blurMe(){
+  $('#blur').toggleClass('blurred');
+}
+
+function closeInv(){
+
+  var spell = $(this).data('spell');
+  console.log(spell);
+  blurMe();
+  $('#inventory').hide();
+}
+
+function showInv(){
+  blurMe();
+  console.log($(this).attr('id'));
+
+  $('#inventory').show();
+}
+
  // google.maps.event.addDomListener(window, 'ready', showMeMap);
 
-$('button').click(getLocation);
+$('#inventory').hide();
 
+$('button').click(getLocation);
+$('#inventory').on('click', '.inventory', closeInv);
+$('#yourSpells').on('click', 'div', showInv);
 });
 
 

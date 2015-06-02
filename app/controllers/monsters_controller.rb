@@ -3,6 +3,20 @@ class MonstersController < ApplicationController
       @monsters = Monster.all
   end
 
+  def attack
+
+    @monster = Monster.find params[:id]
+    
+
+  end
+
+  def damage
+
+    @monster = Monster.find params[:monster_id]
+    gon.health = @monster.health
+
+  end
+
 
   def new
     @monster = Monster.new
@@ -39,6 +53,6 @@ class MonstersController < ApplicationController
 
   private
   def user_params
-    params.require(:monster).permit(:name, :attack, :damage, :defence, :rank, :xp, :gold, :level, :user_id, :rank, :affinity, :lng, :lat, :suburb, :state, :country, :alive, :tagged, :image, :speed)
+    params.require(:monster).permit(:name, :attack, :damage, :defence, :rank, :xp, :gold, :level, :user_id, :rank, :affinity, :longitude, :latitude, :suburb, :state, :country, :alive, :tagged, :image, :speed, :health, :slota, :slotb, :monster_id)
   end
 end

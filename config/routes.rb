@@ -41,6 +41,9 @@
 
 Rails.application.routes.draw do
 
+ get 'attack/:id' => 'monsters#attack', :as => 'monster_attack'
+
+ post 'damage' => 'monsters#damage', :as => 'monster_damage'
 
  get 'session/new'
 

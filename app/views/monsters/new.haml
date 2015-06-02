@@ -16,7 +16,7 @@
   = f.number_field :speed
  %p
   = f.label :rank
-  = f.number_field :rank
+  = f.text_field :rank
  %p
   = f.label :xp
   = f.number_field :xp
@@ -34,22 +34,23 @@
   = f.number_field :user_id
 
  %p
-  = f.label :rank
-  = f.number_field :rank
+  = f.label :health
+  = f.number_field :health
+
  %p
   = f.label :affinity
   = f.text_field :affinity
 
  %p
-  = f.label :lng
-  = f.text_field :lng
+  = f.label :longitude
+  = f.text_field :longitude
 
  %p
-  = f.label :lat
-  = f.text_field :lat
+  = f.label :latitude
+  = f.text_field :latitude
  %p
-  = f.label :suburb
-  = f.text_field :suburb
+  = f.label :zipcode
+  = f.text_field :zipcode
  %p
   = f.label :state
   = f.text_field :state

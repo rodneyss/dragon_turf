@@ -8,6 +8,14 @@ class SessionController < ApplicationController
       session[:user_id] = user.id    #saves just the user id if [:user] holds all info!!! omg
       
 
+      if !request.location.country_code == "RD"
+        user.zipcode = request.location.zipcode
+        user.state = request.location.region_name
+        user.country = request.location.country_code
+        user.save
+      end
+
+
       redirect_to root_path
     else
       flash[:notice] = "Invalid login, please try again"

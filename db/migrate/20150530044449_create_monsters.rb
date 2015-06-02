@@ -4,9 +4,9 @@ class CreateMonsters < ActiveRecord::Migration
       t.string :name
       t.text :image
       t.integer :deaths
-      t.float :lng
-      t.float :lat
-      t.string :suburb
+      t.float :longitude
+      t.float :latitude
+      t.string :zipcode
       t.string :country
       t.string :state
       t.integer :xp

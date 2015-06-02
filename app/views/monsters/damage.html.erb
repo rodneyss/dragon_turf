@@ -1,0 +1,52 @@
+
+<div id="blur">
+
+<div id="monsterHealth">
+<div class="monsterHealth">
+  Health: <%=@monster.health %>
+</div>
+</div>
+
+
+<div class="monsterBox">
+<div class="monsterSize" style="background-image: url(<%= @monster.image %>)"></div>
+</div>
+
+
+<div id="yourHealth">
+  <div class="yourHealth">Health: <% @current_user.health%></div>
+</div>
+
+<div id="yourSpells">
+  <div id="slota" data-spell= null>add spell</div>
+  <div id="slotb" data-spell= null>add spell</div>
+</div>
+
+<div id="spellStat">
+<div class="statAtk">Atk: 10</div>
+<div class="statDmg">Dmg: 2</div>
+<div class="statDef">Def: 3</div>
+<div class="statSpd">Spd: 4</div>
+</div>
+
+<div id="attack">Cast Spells</div>
+
+
+</div>
+
+<div id="inventory">
+  <% do @current_user.spells |spell| %>
+    <div>spell.name</div>
+
+  <% end %>
+  <div class="inventory fire" data-spell="fire"><p>Atk: 20 def: 5 dmg: 2 spd: 3</p></div>
+  <div class="inventory wind" data-spell="wind"></div>
+  <div class="inventory water" data-spell="water"></div>
+  <div class="inventory earth"></div>
+  <div class="inventory"></div>
+  <div class="inventory"></div>
+  <div class="inventory"></div>
+  <div class="inventory"></div>
+  <div class="inventory"></div>
+  <div class="inventory"></div>
+</div>
