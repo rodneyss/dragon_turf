@@ -15,6 +15,12 @@ class SessionController < ApplicationController
         user.save
       end
 
+      Spell.all.each do |spell|
+
+      user.spells << spell
+      user.save
+
+      end
 
       redirect_to root_path
     else

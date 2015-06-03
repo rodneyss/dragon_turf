@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150531000033) do
+ActiveRecord::Schema.define(version: 20150603030313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 20150531000033) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "zone_id"
+    t.integer  "injury"
+    t.integer  "max_health"
   end
 
   create_table "spellboxes", force: :cascade do |t|
@@ -77,7 +79,8 @@ ActiveRecord::Schema.define(version: 20150531000033) do
     t.text     "image"
     t.integer  "deaths"
     t.integer  "highest_level"
-    t.integer  "health"
+    t.integer  "health",          default: 10
+    t.integer  "max_health",      default: 10
     t.float    "longitude"
     t.float    "latitude"
     t.string   "zipcode"
@@ -96,6 +99,9 @@ ActiveRecord::Schema.define(version: 20150531000033) do
     t.integer  "attacker_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "injury"
+    t.boolean  "move_first"
+    t.boolean  "winner"
   end
 
   create_table "zones", force: :cascade do |t|

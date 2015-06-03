@@ -1,7 +1,9 @@
 class SpellsController < ApplicationController
-  
+  include SpellsHelper
+
   def index
       @spells = Spell.all
+      spell_factory if @spells.empty?
   end
 
 

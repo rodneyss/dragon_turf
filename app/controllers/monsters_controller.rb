@@ -1,4 +1,6 @@
 class MonstersController < ApplicationController
+  include MonstersHelper
+
   def index
       @monsters = Monster.all
   end
@@ -7,13 +9,36 @@ class MonstersController < ApplicationController
 
     @monster = Monster.find params[:id]
     
-
   end
 
   def damage
 
     @monster = Monster.find params[:monster_id]
-    gon.health = @monster.health
+
+      if @monster.attacker_id == @current_user.id || @monster.tagged == false
+        @monster.attacker_id = @current_user.id
+        @monster.tagged = true
+        @monster.save
+
+        gon.m_health = @monster.health
+        gon.m_max_health = @monster.max_health
+        gon.m_injury = @monster.injury
+        # gon.spells = how_manyspells
+        gon.p_health = @current_user.health
+        gon.p_max_health = @current_user.max_health
+        gon.p_injury = @current_user.injury
+        gon.p_move = @current_user.move_first
+        gon.winner = @current_user.winner
+
+        @player_spells = how_manyspells
+
+
+
+      end
+  end
+
+
+  def combat
 
   end
 

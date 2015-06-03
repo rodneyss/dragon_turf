@@ -1,26 +1,34 @@
 module SpellsHelper
 
-  def factory
-    m = Spell.new
-    m.name = ["Fireball","Iceshard","Magic Missiles","Tornado"].sample
+  def spell_factory
+    
+    spell_base = ["Fireball","Iceshard","Boulder","Tornado"]
 
-      m.attack = rand(1..3)
-      m.damage = rand(5..10)
-      m.speed = rand(1..3)
-      m.defence = rand(1..4)
-      m.affinity = "fire"
+    
+      spell_base.each do |spell|
+          m = Spell.new
+          m.name = spell
+          m.attack = rand(1..3)
+          m.damage = rand(5..10)
+          m.speed = rand(1..3)
+          m.defence = rand(1..4)
 
-  m.save
+          case m.name
+            when "Fireball"
+              m.affinity = "fire"
+            when "Iceshard"
+              m.affinity = "water"
+            when "Boulder"
+              m.affinity = "earth"
+            when "Tornado"
+              m.affinity  = "air"
+          end
 
+          m.save
+      end
+  
 
   end
-
-
-  b = Spellbox.new
-  b.user_id = 1
-  b.spell_id = 1
-  b.save
-
 
 
 end

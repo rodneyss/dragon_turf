@@ -1,25 +1,19 @@
 module MonstersHelper
 
-  def factory
-    m = Monster.new
-    m.name = ["Bill","Marry","Joseph","Larry"].sample + (0...10).map { ('a'..'z').to_a[rand(26)] }.join
-      m.deaths = 0
-      m.country = "Australia"
-      m.state = "NSW"
-      m.level = rand(1..10)
-      m.gold = m.level*2
-      m.xp = m.level*2
-      m.rank = "C"
-      m.attack = m.level*2
-      m.damage = m.level*2
-      m.speed = m.level*2
-      m.defence = m.level*2
-      m.affinity = "fire"
+  def how_manyspells
+    spell_cache = []
 
-  m.save
+      @current_user.spells.all.each do |s|
+        spell = s.name 
+        spell = Spellbox.find_by :spell_id => s.id, :user_id => @current_user.id
 
+          spell.amount.times do
+            m = Spell.find s.id
+            spell_cache << m
+          end
 
-
+      end
+    spell_cache
 
   end
 

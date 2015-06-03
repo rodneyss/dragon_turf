@@ -7,13 +7,13 @@ class CreateUsers < ActiveRecord::Migration
       t.text :image
       t.integer :deaths
       t.integer :highest_level
-      t.integer :health
+      t.integer :health, :default => 10
+      t.integer :max_health, :default =>10
       t.float :longitude
       t.float :latitude
       t.string :zipcode
       t.string :country
       t.string :state
-      t.integer :health
       t.integer :xp
       t.integer :gold
       t.integer :slota

@@ -14,19 +14,19 @@
 
 
 <div id="yourHealth">
-  <div class="yourHealth">Health: <% @current_user.health%></div>
+  <div class="yourHealth">Health: <%= @current_user.health%></div>
 </div>
 
 <div id="yourSpells">
-  <div id="slota" data-spell= null>add spell</div>
-  <div id="slotb" data-spell= null>add spell</div>
+  <div id="slota" data-spell= "n" data-stats= "n" data-eleid="n">add spell</div>
+  <div id="slotb" data-spell= "n" data-stats= "n" data-eleid="n">add spell</div>
 </div>
 
 <div id="spellStat">
-<div class="statAtk">Atk: 10</div>
-<div class="statDmg">Dmg: 2</div>
-<div class="statDef">Def: 3</div>
-<div class="statSpd">Spd: 4</div>
+<div class="statAtk">Atk: </div>
+<div class="statDmg">Dmg: </div>
+<div class="statDef">Def: </div>
+<div class="statSpd">Spd: </div>
 </div>
 
 <div id="attack">Cast Spells</div>
@@ -35,11 +35,14 @@
 </div>
 
 <div id="inventory">
-  <% do @current_user.spells |spell| %>
-    <div>spell.name</div>
+  <% @player_spells.each do |spell| %>
 
+  <div class="inventory <%= spell.affinity %>" data-spell="<%= spell.affinity %>" data-spellid= <%= spell.id  %> 
+  data-stats= <%= spell.attack.to_s + "," + spell.damage.to_s + "," + spell.defence.to_s + "," + spell.speed.to_s %> >
+  <p>Atk: <%= spell.attack %> dmg: <%= spell.damage %> def: <%= spell.defence %> spd: <%= spell.speed %></p></div>
   <% end %>
-  <div class="inventory fire" data-spell="fire"><p>Atk: 20 def: 5 dmg: 2 spd: 3</p></div>
+
+<!--   <div class="inventory fire" data-spell="fire"><p>Atk: 20 def: 5 dmg: 2 spd: 3</p></div>
   <div class="inventory wind" data-spell="wind"></div>
   <div class="inventory water" data-spell="water"></div>
   <div class="inventory earth"></div>
@@ -48,5 +51,5 @@
   <div class="inventory"></div>
   <div class="inventory"></div>
   <div class="inventory"></div>
-  <div class="inventory"></div>
+  <div class="inventory"></div> -->
 </div>
