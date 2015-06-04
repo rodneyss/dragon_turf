@@ -9,8 +9,15 @@ module PagesHelper
 
         any_monsters = Monster.all.where :zipcode => @current_user.zipcode
 
-        if any_monsters.empty?  || any_monsters.count < 2
-          5.times do
+
+        add_more = false
+
+        if any_monsters.present? #more than 1km away will add more
+            add_more = check_distance(any_monsters)
+        end
+
+        if any_monsters.empty?  || any_monsters.count < 2 || add_more
+          6.times do
             cord1 = rand(0.00000..0.0081)
             cord2 = rand(0.00000..0.0081)
 
@@ -83,6 +90,46 @@ module PagesHelper
 
         end
     end
+
+def check_distance(mons)
+
+    mons.each do |m|
+     d = distance_between(@current_user.latitude, @current_user.longitude, m.latitude, m.longitude)
+
+        if d < 1000
+            return false
+        end
+    end
+
+    return true
+
+end
+
+
+def distance_between(lat1, lon1, lat2, lon2)
+
+
+  # convert degrees to radians
+
+   lat1 = lat1/180 * Math::PI
+   lon1 = lon1/180 * Math::PI
+   lat2 = lat2/180 * Math::PI
+   lon2 = lon2/180 * Math::PI
+
+  # compute deltas
+  dlat = lat2 - lat1
+  dlon = lon2 - lon1
+
+  a = (Math.sin(dlat / 2))**2 + Math.cos(lat1) * 
+  (Math.sin(dlon / 2) ) **2 * Math.cos(lat2)
+  c = 2 * Math.atan2( Math.sqrt(a), Math.sqrt(1-a))
+
+
+  
+  return (c * 6371000).round
+
+  
+end
 
 
 
