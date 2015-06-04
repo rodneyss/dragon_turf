@@ -1,0 +1,53 @@
+<div id="holdMe">
+<h2> <%= @user.name %> 
+
+<% if @user.id == @current_user.id %>
+<%= link_to 'edit', edit_users_path %>
+<% end %>
+
+</h2>
+
+
+<div class="monsterBox">
+<div class="monsterSize" style="background-image: url(<%= @user.image %>)"></div>
+</div> 
+
+
+<div id="showPlayer">
+
+  <div>
+  <h3>Info</h3>
+  <p>Level: <%= @user.level %></p>
+  <p>Health:<%= @user.health%> / <%=@user.max_health %></p>
+  <p>Gold: <%= @user.gold %></p>
+  <p>Country: <%= @user.country %></p>
+  <p>State: <%= @user.state %></p>
+  
+  </div>
+
+  <div>
+  <h3>Stats</h3>
+  <p>Player kills: <%= @user.pkills %></p>
+  <p>Monster kills: <%= @user.mkills %></p>
+  <p>Dragons: <%= @user.dkills %></p>
+  <p>Deaths: <%= @user.deaths %></p>
+  <p>Highest level: <%= @user.highest_level %></p>
+  </div>
+
+</div>
+
+<div id="userInventory">
+  <% @player_spells.each do |spell| %>
+
+  <div class="userInventory <%= spell.affinity %>" data-spell="<%= spell.affinity %>" data-spellid= <%= spell.id  %> 
+  data-stats= <%= spell.attack.to_s + "," + spell.damage.to_s + "," + spell.defence.to_s + "," + spell.speed.to_s %> >
+  <p>Atk: <%= spell.attack %> dmg: <%= spell.damage %> def: <%= spell.defence %> spd: <%= spell.speed %></p></div>
+  <% end %>
+
+
+</div>
+
+
+
+
+</div>

@@ -1,12 +1,18 @@
+<div class="ogreAttackWindow">
+<div class="ogreStats">
 <h2> <%= @monster.name %></h2>
 
-<li>Attack: <%= @monster.attack %></li>
-<li>damage: <%= @monster.damage %></li>
-<li>defence: <%= @monster.defence %></li>
-<li>Level: <%= @monster.level %></li>
-<li>Rank: <%= @monster.rank %></li>
-<li>affinity: <%= @monster.affinity %></li>
+<p>Attack: <%= @monster.attack %></p>
+<p>damage: <%= @monster.damage %></p>
+<p>defence: <%= @monster.defence %></p>
+<p>Level: <%= @monster.level %></p>
+<p>Rank: <%= @monster.rank %></p>
+<p>affinity: <%= @monster.affinity %></p>
 
 
 <%= link_to 'Edit', edit_monster_path(@monster) %>
 <%= link_to 'Delete', @monster, :method => 'delete', :data => {:confirm => "Are you sure"} %>
+
+</div>
+
+</div>

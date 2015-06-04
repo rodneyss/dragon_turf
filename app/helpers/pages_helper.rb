@@ -1,6 +1,6 @@
 module PagesHelper
 
-
+    ###########spawn some monsters at location###################
   def player_cords
         a= "http://vignette3.wikia.nocookie.net/monster/images/f/fc/Ogre.gif"
         b="http://www.beastsofwar.com/wp-content/uploads/2013/02/Ogre-Scheme-Green.jpg"
@@ -32,36 +32,42 @@ module PagesHelper
             m.attack = m.level*2
             m.damage = m.level*2
             m.speed = m.level*2
-            m.defence = m.level*2
-            m.max_health = m.level*2
-            m.health = m.level*2
+            m.defence = 10
+            m.max_health = m.level*20
+            m.health = m.level*20
 
             num = rand(1..100)
         
                
               if num > 90
                 m.rank = "S"
-                m.health += 20
+                m.health += 40
+                m.max_health = m.health
                 m.damage += 15
                 m.gold += 16
                 m.name +=  m.level.to_s
                 m.name += "S"
+                m.defence += 3
                 m.image = s
               elsif num > 80
                 m.rank = "A"
-                m.health += 10
+                m.health += 30
+                m.max_health = m.health
                 m.damage += 8
                 m.gold += 10
                 m.name += m.level.to_s
                 m.name += "A"
+                m.defence += 2
                 m.image = a
               elsif num > 70
                 m.rank = "B"
-                m.health += 5
+                m.health += 20
+                m.max_health = m.health
                 m.damage += 5
                 m.gold += 5
                 m.name += m.level.to_s
                 m.name += "B"
+                m.defence += 1
                 m.image = b
               else
                 m.rank = "C"

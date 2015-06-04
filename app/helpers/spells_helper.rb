@@ -8,10 +8,10 @@ module SpellsHelper
       spell_base.each do |spell|
           m = Spell.new
           m.name = spell
-          m.attack = rand(1..3)
-          m.damage = rand(5..10)
+          m.attack = rand(2..3)
+          m.damage = rand(9..20)
           m.speed = rand(1..3)
-          m.defence = rand(1..4)
+          m.defence = rand(6..8)
 
           case m.name
             when "Fireball"
@@ -20,6 +20,7 @@ module SpellsHelper
               m.affinity = "water"
             when "Boulder"
               m.affinity = "earth"
+              m.defence += 2
             when "Tornado"
               m.affinity  = "air"
           end

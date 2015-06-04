@@ -1,3 +1,105 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#usersListed{
+  margin: 0 auto;
+  width:800px;
+}
+
+
+
+#result{
+  text-align: center;
+  height: 200px;
+  line-height: 200px;
+
+}
+
+
+
+#userPic{
+margin: 0 auto;
+width: 200px;
+height: 300px;
+
+}
+
+#showPlayer{
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 500px;
+  height: 200px;
+  display: flex;
+  -webkit-justify-content: center;
+ justify-content: center;
+ -webkit-align-items: baseline;
+ align-items: baseline;
+ border: 1px solid white;
+
+
+}
+
+#showPlayer div{
+  font-size: 0.8em;
+  width: 250px;
+  height: 200px;
+}
+
+#showPlayer div:first-of-type{
+  border-right: 1px solid white;
+
+}
+
+#showPlayer div p,h3{
+  margin-left: 100px;
+}
+
+#holdMe h2{
+  text-align: center;
+}
+
+#userInventory{
+/*  position: absolute;
+  top:10%;
+  left:50%;
+  transform: translate(-50%);*/
+  margin: 0 auto;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: space-between;
+  background-color: rgba(100,0,0,0)
+}
+
+.userInventory{
+  // margin: 0;
+  color: white;
+  width: 120px;
+  height: 120px;
+  background-color: rgba(220,12,8,.6);
+  border: 1px solid white;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.userInventory p{
+  font-size: .6em;
+  position: relative;
+  left:0;
+  top: 0;
+  margin-top: 0;
+
+  background-color: rgba(0,0,0,1);
+}
+
+
+#dragon{
+  margin: 0 auto;
+  margin-top: 80px;
+  width:350px;
+  height: 194px;
+  background-image: url("http://www.sacredwiki.org/images/f/fa/S2Dragon.png")
+}
+

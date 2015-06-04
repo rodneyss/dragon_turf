@@ -18,8 +18,8 @@
 </div>
 
 <div id="yourSpells">
-  <div id="slota" data-spell= "n" data-stats= "n" data-eleid="n">add spell</div>
-  <div id="slotb" data-spell= "n" data-stats= "n" data-eleid="n">add spell</div>
+  <div id="slota" data-spell= "n" data-stats= "0,0,0,0" data-eleid="n">add spell</div>
+  <div id="slotb" data-spell= "n" data-stats= "0,0,0,0" data-eleid="n">add spell</div>
 </div>
 
 <div id="spellStat">
@@ -29,10 +29,21 @@
 <div class="statSpd">Spd: </div>
 </div>
 
-<div id="attack">Cast Spells</div>
+<!-- <div id="attack">Cast Spells</div> -->
 
+<form id="attackForm" action="/combat" method="post">
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+  <input id="slotaSend" type="hidden" name="slota" >
+  <input id="slotbSend" type="hidden" name="slotb" >
+  <input type="hidden" name="monster_id" value="<%= @monster.id %>" >
+ 
+  <button id="attack">Cast Spells!</button>
+
+</form>
 
 </div>
+
+
 
 <div id="inventory">
   <% @player_spells.each do |spell| %>
@@ -42,14 +53,13 @@
   <p>Atk: <%= spell.attack %> dmg: <%= spell.damage %> def: <%= spell.defence %> spd: <%= spell.speed %></p></div>
   <% end %>
 
-<!--   <div class="inventory fire" data-spell="fire"><p>Atk: 20 def: 5 dmg: 2 spd: 3</p></div>
-  <div class="inventory wind" data-spell="wind"></div>
-  <div class="inventory water" data-spell="water"></div>
-  <div class="inventory earth"></div>
-  <div class="inventory"></div>
-  <div class="inventory"></div>
-  <div class="inventory"></div>
-  <div class="inventory"></div>
-  <div class="inventory"></div>
-  <div class="inventory"></div> -->
+
 </div>
+
+<div id="projectile"></div>
+</div>
+
+
+
+
+

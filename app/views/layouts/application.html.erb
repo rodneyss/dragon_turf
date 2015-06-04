@@ -14,7 +14,7 @@
 <body>
 <div id="container">
 
-<nav>
+<nav id="mortals">
   <ul>
     <li><%= link_to('Home', root_path ) %></li>
 
@@ -24,7 +24,7 @@
 </nav>
 
 <% if flash[:notice].present? %>
-  <h2> <%= flash[:notice] %></h2>
+  <h2 id="warning"> <%= flash[:notice] %></h2>
 <% end %>
 
 
@@ -32,6 +32,12 @@
 <%= yield %>
 
 </div>
+
+<nav id="adminGod">
+<ul>
+<%== intellinav2  %>
+</ul>
+</nav>
 
 </body>
 </html>

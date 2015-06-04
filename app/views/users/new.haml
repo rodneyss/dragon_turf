@@ -1,5 +1,5 @@
 - if @user.errors.any?
-  %ol
+  %ol#errorNess
     - @user.errors.full_messages.each do |msg|
       %li= msg
 
@@ -16,6 +16,10 @@
   %p
     = f.label :password_confirmation
     = f.password_field :password_confirmation
+
+  %p
+    = f.label :image
+    = f.text_field :image
   %p
     = f.label :submit
     = f.submit

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603030313) do
+ActiveRecord::Schema.define(version: 20150603080652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,14 +42,15 @@ ActiveRecord::Schema.define(version: 20150603030313) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "zone_id"
-    t.integer  "injury"
+    t.integer  "injury",      default: 0
     t.integer  "max_health"
+    t.boolean  "winner",      default: false
   end
 
   create_table "spellboxes", force: :cascade do |t|
     t.integer "spell_id"
     t.integer "user_id"
-    t.integer "amount"
+    t.integer "amount",   default: 1
   end
 
   add_index "spellboxes", ["spell_id"], name: "index_spellboxes_on_spell_id", using: :btree
@@ -76,9 +77,9 @@ ActiveRecord::Schema.define(version: 20150603030313) do
     t.string   "name"
     t.boolean  "admin",           default: false
     t.string   "password_digest"
-    t.text     "image"
-    t.integer  "deaths"
-    t.integer  "highest_level"
+    t.text     "image",           default: "https://wiki.shibboleth.net/confluence/images/icons/profilepics/default.png"
+    t.integer  "deaths",          default: 0
+    t.integer  "highest_level",   default: 0
     t.integer  "health",          default: 10
     t.integer  "max_health",      default: 10
     t.float    "longitude"
@@ -86,22 +87,22 @@ ActiveRecord::Schema.define(version: 20150603030313) do
     t.string   "zipcode"
     t.string   "country"
     t.string   "state"
-    t.integer  "xp"
-    t.integer  "gold"
+    t.integer  "xp",              default: 0
+    t.integer  "gold",            default: 0
     t.integer  "slota"
     t.integer  "slotb"
-    t.integer  "level"
-    t.integer  "pkills"
-    t.integer  "dkills"
-    t.integer  "mkills"
+    t.integer  "level",           default: 1
+    t.integer  "pkills",          default: 0
+    t.integer  "dkills",          default: 0
+    t.integer  "mkills",          default: 0
     t.boolean  "attackable",      default: false
     t.boolean  "in_battle",       default: false
     t.integer  "attacker_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "injury"
-    t.boolean  "move_first"
-    t.boolean  "winner"
+    t.integer  "injury",          default: 0
+    t.boolean  "move_first",      default: false
+    t.boolean  "winner",          default: false
   end
 
   create_table "zones", force: :cascade do |t|

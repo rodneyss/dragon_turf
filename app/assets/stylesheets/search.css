@@ -23,12 +23,46 @@ html, body{
 }
 
 .content{
-
+  margin-top: 10%;
+  text-align: center;
 }
 
 form{
-  margin-left: 30%;
+  margin-top: 10%;
+  margin-left: 25%;
 
+}
+
+label{
+  min-width: 150px;
+  text-align: right;
+  display: inline-block;
+
+}
+
+#loginButton{
+  display: center;
+  margin-left: 20%;
+}
+
+#errorNess{
+  margin-top: 30px;
+}
+#errorNess li{
+  margin-left: 50%;
+  transform: translate(-50%);
+}
+
+#warning{
+  text-align: center;
+}
+
+.field_with_errors {
+  display: inline-block;
+}
+
+.field_with_errors input{
+  border-color: red;
 }
 nav{
   position: relative;
@@ -42,15 +76,15 @@ nav a{
 }
 
 a:link {
-    color: blue;
+    color: #C08000;
 }
 
 a:visited {
-    color: blue;
+    color: #C08000;
 }
 
 a:hover {
-    color: green;
+    color: #80C0FF;
 }
 
 a:active {
@@ -63,12 +97,60 @@ a:active {
   width: 50%;
   height: 30px;
 
-  border: 1px solid blue;
+ 
+ 
+  -moz-box-shadow:inset 0px 1px 0px 0px #54a3f7;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #54a3f7;
+  box-shadow:inset 0px 1px 0px 0px #54a3f7;
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #007dc1), color-stop(1, #0061a7));
+  background:-moz-linear-gradient(top, #007dc1 5%, #0061a7 100%);
+  background:-webkit-linear-gradient(top, #007dc1 5%, #0061a7 100%);
+  background:-o-linear-gradient(top, #007dc1 5%, #0061a7 100%);
+  background:-ms-linear-gradient(top, #007dc1 5%, #0061a7 100%);
+  background:linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#007dc1', endColorstr='#0061a7',GradientType=0);
+  background-color:#007dc1;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+  border:1px solid #124d77;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:13px;
+  padding:6px 24px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #154682;
 }
+#scanMonsters:hover {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #0061a7), color-stop(1, #007dc1));
+  background:-moz-linear-gradient(top, #0061a7 5%, #007dc1 100%);
+  background:-webkit-linear-gradient(top, #0061a7 5%, #007dc1 100%);
+  background:-o-linear-gradient(top, #0061a7 5%, #007dc1 100%);
+  background:-ms-linear-gradient(top, #0061a7 5%, #007dc1 100%);
+  background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0061a7', endColorstr='#007dc1',GradientType=0);
+  background-color:#0061a7;
+}
+#scanMonsters:active {
+  position:relative;
+  top:1px;
+}
+
+
+
+
 
 #look{
   position: absolute;
   top: 32px;
+}
+
+.scanMiddle{
+  text-align: center;
+  left: 45%;
+  padding-top: 10%;
 }
 
 .ogrepop{
@@ -79,6 +161,9 @@ a:active {
 
 
 .ogreAttackWindow{
+  width: 960px;
+  height: 330px;
+
   display:flex;
   justify-content: center;
 }
@@ -88,7 +173,9 @@ a:active {
 }
 
 .ranking{
-  width: 20%;
+  
+  width: 150px;
+  margin-left: 5vw;
 }
 
 
@@ -113,11 +200,14 @@ a:active {
 }
 
 .ogreStats{
- width: 33%;
+  margin-top:15px;
+ width: 200px;
+ height:315px;
 }
 
 
 .ogreStats p{
+  margin-left: 30px;
   text-align: left;
   display: block
 }
@@ -152,7 +242,7 @@ p span{
 }
 .monsterHealth{
   color: red;
-  width: 80%;
+  width: 100%;
   height: 20px;
   background: green;
 
@@ -251,7 +341,18 @@ p span{
   line-height: 30px;
 }
 
-#attack{
+#attackForm{
+margin: 0 auto;
+width: 206px;
+}
+
+#attackForm label{
+  min-width: 0;
+  text-align: left;
+  display: block;
+}
+
+/*#attack{
   color: white;
   margin: 0 auto;
   margin-top: 10px;
@@ -261,7 +362,76 @@ p span{
   line-height: 50px;
   background: green;
   border:1px solid red;
+}*/
+
+
+
+
+#attack {
+    margin: 0 auto;
+  margin-top: 10px;
+  text-align: center;
+  height: 50px;
+  width: 204px;
+  line-height: 40px;
+
+
+
+  -moz-box-shadow:inset 0px 1px 0px 0px #9acc85;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #9acc85;
+  box-shadow:inset 0px 1px 0px 0px #9acc85;
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #74ad5a), color-stop(1, #68a54b));
+  background:-moz-linear-gradient(top, #74ad5a 5%, #68a54b 100%);
+  background:-webkit-linear-gradient(top, #74ad5a 5%, #68a54b 100%);
+  background:-o-linear-gradient(top, #74ad5a 5%, #68a54b 100%);
+  background:-ms-linear-gradient(top, #74ad5a 5%, #68a54b 100%);
+  background:linear-gradient(to bottom, #74ad5a 5%, #68a54b 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#74ad5a', endColorstr='#68a54b',GradientType=0);
+  background-color:#74ad5a;
+  border:1px solid #3b6e22;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:13px;
+  font-weight:bold;
+  padding:6px 12px;
+  text-decoration:none;
 }
+#attack:hover {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #68a54b), color-stop(1, #74ad5a));
+  background:-moz-linear-gradient(top, #68a54b 5%, #74ad5a 100%);
+  background:-webkit-linear-gradient(top, #68a54b 5%, #74ad5a 100%);
+  background:-o-linear-gradient(top, #68a54b 5%, #74ad5a 100%);
+  background:-ms-linear-gradient(top, #68a54b 5%, #74ad5a 100%);
+  background:linear-gradient(to bottom, #68a54b 5%, #74ad5a 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#68a54b', endColorstr='#74ad5a',GradientType=0);
+  background-color:#68a54b;
+}
+#attack:active {
+  position:relative;
+  top:1px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #attack:hover{
   cursor: pointer;
@@ -291,13 +461,12 @@ p span{
   width: 500px;
   height: 500px;
   display: flex;
-  flex-wrap: wrap;
-  align-content: center;
+  flex-flow: row wrap;
+  align-content: flex-start;
   background-color: rgba(100,0,0,0)
 }
 
 .inventory{
-  margin: 0;
   color: white;
   width: 120px;
   height: 120px;
@@ -333,11 +502,11 @@ p span{
   background-image: url("http://www.dunjinni.com/forums/uploads/benwax/explosion_4.png");
 }
 
-.wind{
+.air{
   background-image: url("http://classic.battle.net/war3/images/neutral/spells/tornado.gif");
 }
 
-.windProject{
+.airProject{
   background-image: url("http://www.gif-star.com/natur/wirbelsturm/wirbelsturm04.gif");
 }
 
@@ -346,6 +515,11 @@ p span{
 }
 
 .waterProject{
+      -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
   background-image: url("http://api.ning.com/files/yqBR5X1kRtWZj-w2hpJgj-8sPhrWcZ*mRyqTcevMm4moxPVHKVK2yWRZQEbTzKkhULwX5JNswvzmmNUqAoAqr2hH9W3Nb0FK/SRiconspellIce.png");
 }
 
@@ -358,10 +532,64 @@ p span{
 
 }
 
+#projectile{
+  position: absolute;
+  left: -200px;
+  top: 140px;
+  width:200px;
+  height: 200px;
+
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  
+}
+
+.projectFire{
+    animation-name: fire;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
+
+@keyframes fire{
+    0%   { left:-200px; }
+    100% {left:42vw; display: none; }
+}
+
+.projectMiss{
+    animation-name: miss;
+    animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
+
+@keyframes miss{
+    0%   { left:-200px; }
+    100% {left:80vw; display: none; }
+}
 
 
 
+#adminGod{
+  position: fixed;
+  left: 0;
+  
+  bottom: 0;
+}
 
+
+#adminGod ul{
+  justify-content: center;
+  flex-direction: column-reverse;
+  
+}
+
+#adminGod ul li{
+ margin: 0 10px;
+ display: block
+  
+}
 
 
 
@@ -370,7 +598,8 @@ nav ul{
   margin-left: 0;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+
 }
 nav li{
   list-style-type: none;

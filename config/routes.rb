@@ -43,7 +43,13 @@ Rails.application.routes.draw do
 
  get 'attack/:id' => 'monsters#attack', :as => 'monster_attack'
 
- post 'damage' => 'monsters#damage', :as => 'monster_damage'
+ get 'damage' => 'monsters#damage', :as => 'monster_damage'
+
+ post 'combat' => 'monsters#combat', :as => 'monster_combat'
+
+ get 'result' => 'monsters#result', :as => 'monster_result'
+
+
 
  get 'session/new'
 
@@ -53,7 +59,9 @@ Rails.application.routes.draw do
 
  post 'search' => 'pages#anymon'
 
-   resources :users, :except => [:edit, :show] do   #rerouting for edit profile
+
+
+   resources :users, :except => [:edit] do   #rerouting for edit profile
     collection do
       get '/edit' => 'users#edit'
     end

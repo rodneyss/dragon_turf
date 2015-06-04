@@ -22,8 +22,6 @@ function getLocation() {
 }
 
 
-
-
 function showPosition(position) {
 
    var lat = position.coords.latitude;
@@ -67,6 +65,9 @@ var numbers = lat.toString()+ "," + lng.toString();
         mapOptions);
     map.setOptions({styles: styles});
     var marker = createMarker(cat, map, "me");
+
+    $('#scanMonsters').show();
+    $('#look').toggleClass("scanMiddle");
 
   }
      
@@ -223,11 +224,24 @@ function blurMe(){
 
 var slot;   //which slot was clicked on
 
-var player = {atk:0 ,dmg: 0, def:0, spd:0 };
+var player = [];
 
 function playerCombinedStats(){
+  player = [];
+  var a = document.getElementById("slota").getAttribute('data-stats');
+  var b = document.getElementById("slotb").getAttribute('data-stats');
 
-  spellStat = spellStat.split(",");
+  a= a.split(",");
+  b= b.split(",");
+  for( var i = 0 ; i< 4; i++){
+    num = parseInt(a[i]) + parseInt(b[i]);
+    player.push(num);
+  };
+
+  $('.statAtk').html("Atk: " + player[0]);
+  $('.statDmg').html("Dmg: " + player[1]);
+  $('.statDef').html("Def: " + player[2]);
+  $('.statSpd').html("Spd: " + player[3]);
 }
 
 function closeInv(){
@@ -236,7 +250,8 @@ function closeInv(){
   var spellStat = $(this).data('stats');
   var eleIndex  = $(this).index();
 
-  console.log(eleIndex);
+
+  $("#"+slot+"Send").val(spellid);
 
   var slotPicked = document.getElementById(slot).getAttribute('data-eleid');
   
@@ -258,24 +273,27 @@ function closeInv(){
   $("#"+slot).attr('data-stats', spellStat);
   $("#"+slot).attr('data-eleid', eleIndex);
  
+  
 
   $("#yourSpells div").text("");
 
   blurMe();
   $('#inventory').hide();
 
-
-
+  playerCombinedStats();
 
 }
 
+
 function showInv(){
-  blurMe();
-  
 
-  slot = ( $(this).attr('id') );
-
-  $('#inventory').show();
+  if ( $("#inventory .inventory").length >=2 ){
+    blurMe();
+    slot = ( $(this).attr('id') );
+    $('#inventory').show();
+  }else{
+    window.alert("not enough spells");
+  }
 
 };
 
@@ -285,83 +303,109 @@ function calcHealth(currHealth, maxHealth){
   return diff;
 };
 
-function togAnim(whoHealth, diff){
-  $(whoHealth).toggleClass('animHealth');
-  $(whoHealth).css("width", diff+"%");
-  setTimeout( function() { $(whoHealth).toggleClass('animHealth') }, 2000 );
-};
-
 
 
 function combatSetup(){
 
-  var diff = calcHealth(gon.p_health, gon.p_max_health);
+  var diff = calcHealth(gon.p_health + gon.p_injury, gon.p_max_health);
   $('.yourHealth').css("width", diff+"%");
 
-  diff = calcHealth(gon.m_health, gon.m_max_health);
+  diff = calcHealth(gon.m_health + gon.m_injury, gon.m_max_health);
   $('.monsterHealth').css("width", diff+"%");
+  
+      if(gon.battle){
 
+          if(gon.p_move === true){
 
-  if(gon.p_move === true){
+                if(gon.m_injury > 0){
+                  setTimeout( function() {
 
-        if(gon.m_injury > 0){
-          setTimeout( monsterDamage, 1000);
-          }
-        if(gon.p_injury > 0){
-          setTimeout( playerDamage, 3000);
-          }
+                    $("#projectile").toggleClass("waterProject");
+                    $("#projectile").toggleClass("projectFire");
 
-  }else{
-        if(gon.p_injury > 0){
-          setTimeout( playerDamage, 1000);
-        }
+                  }, 500);
 
-        if(gon.m_injury > 0){
-          setTimeout( monsterDamage, 3000);
-        }
+                  setTimeout( monsterDamage, 1000);
 
-  };
+                }else{
+                    $("#projectile").toggleClass("waterProject");
+                    $("#projectile").toggleClass("projectMiss");
+                }
 
+                if(gon.p_injury > 0){
+                  setTimeout( playerDamage, 3000);
+                  }
 
-  combatResult
+          }else{
+                if(gon.p_injury > 0){
+                  setTimeout( playerDamage, 1000);
+                }
+
+                if(gon.m_injury > 0){
+
+                  setTimeout( function() {
+
+                    $("#projectile").toggleClass("waterProject");
+                    $("#projectile").toggleClass("projectFire");
+
+                  }, 2000);
+                  
+                  setTimeout( monsterDamage, 3000);
+
+                }else{
+                    $("#projectile").toggleClass("waterProject");
+                    $("#projectile").toggleClass("projectMiss");
+                }
+
+          };
+
+      };
 
 };
 
+
+
+
+
+
+function togAnim(whoHealth, diff){
+  $(whoHealth).toggleClass('animHealth');
+  $(whoHealth).css("width", diff+"%");
+  setTimeout( function() { $(whoHealth).toggleClass('animHealth') }, 1000 );
+};
+
 function playerDamage(){
-     var diff = calcHealth( (gon.p_health-gon.p_injury), gon.p_max_health );
+     var diff = calcHealth( (gon.p_health), gon.p_max_health );
       togAnim('.yourHealth', diff);
 }
 
 function monsterDamage(){
-      var diff = calcHealth( (gon.m_health-gon.m_injury), gon.m_max_health );
+      var diff = calcHealth( (gon.m_health), gon.m_max_health );
       togAnim('.monsterHealth', diff);
 }
 
-
-function combatResult(){
-  // if()
-}
-
-
-
-$('#inventory').hide();
 
 function gofind(){
  document.location.reload();
 };
 
 if( $('#scanMonsters').length === 1) {
+  $('#scanMonsters').hide();
+  $('#scanMonsters').click(gofind);
+  $('#look').toggleClass("scanMiddle");
   getLocation();
 };
 
 if( $('#yourSpells').length ===1){
+  $('#inventory').hide();
+  $('#inventory').on('click', '.inventory', closeInv);
+  $('#yourSpells').on('click', 'div', showInv);
   combatSetup();
 };
 
 
-$('#scanMonsters').click(gofind);
-$('#inventory').on('click', '.inventory', closeInv);
-$('#yourSpells').on('click', 'div', showInv);
+
+
 });
 
 
