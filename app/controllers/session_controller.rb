@@ -19,17 +19,23 @@ class SessionController < ApplicationController
         user.save
       end
 
-        Spell.all.each do |spell|
-          stash = Spellbox.find_by :user_id => user.id, :spell_id => spell.id
-          if stash.present?
-              stash.amount += 1
-              stash.save
-          else
-            user.spells << spell
-            user.save
-          end
+      if Spell.count > 0
 
-        end
+          Spell.all.each do |spell|
+            stash = Spellbox.find_by :user_id => user.id, :spell_id => spell.id
+            if stash.present?
+                stash.amount += 1
+                stash.save
+            else
+              user.spells << spell
+              user.save
+            end
+
+          end
+      end
+
+
+
 
         if user.health <=0
           user_looser
