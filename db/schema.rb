@@ -80,8 +80,8 @@ ActiveRecord::Schema.define(version: 20150603080652) do
     t.text     "image",           default: "https://wiki.shibboleth.net/confluence/images/icons/profilepics/default.png"
     t.integer  "deaths",          default: 0
     t.integer  "highest_level",   default: 0
-    t.integer  "health",          default: 10
-    t.integer  "max_health",      default: 10
+    t.integer  "health",          default: 120
+    t.integer  "max_health",      default: 120
     t.float    "longitude"
     t.float    "latitude"
     t.string   "zipcode"
