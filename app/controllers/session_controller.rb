@@ -35,8 +35,6 @@ class SessionController < ApplicationController
       end
 
 
-
-
         if user.health <=0
           user_looser
         end
@@ -50,8 +48,6 @@ class SessionController < ApplicationController
 
 
   end
-
-
 
 
 

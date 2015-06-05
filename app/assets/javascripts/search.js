@@ -1,7 +1,7 @@
 $(document).ready( function (){
 var markerCount = 0;
 var map;
-var image = '/assets/ogre.png';
+var image = 'http://res.cloudinary.com/cheeseburglr/image/upload/v1433475144/ogre_jz0wux.png';
 
 
 function getLocation() {
